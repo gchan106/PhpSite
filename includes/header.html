@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<?php  
+  if (session_status() == PHP_SESSION_NONE)
+    session_start(); 
+?>
+
+
+<head>
+	<title><?php echo $page_title; ?></title> <!-- php title base on web_Page-->
+	  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!-- bootstrap_Files -->
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+	<!-- styling_CSS -->
+	<link rel="stylesheet" href="css/style.css">
+  
+  <!-- custom_Google_Fonts-->
+	<link href="https://fonts.googleapis.com/css2?family=Oleo+Script+Swash+Caps:wght@700&display=swap" rel="stylesheet">
+
+  </head>
+
+<!-- Footer.html is needed to Complete this html tag and body tag below !! -->
+
+<body>
+
+<!---Navbar-->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container-fluid">
+      
+      <a class="navbar-brand" href="index.php">Citi Sushi</a>
+      
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" 
+              aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+        
+              </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      
+        <ul class="navbar-nav mr-auto">
+          
+            <li class="nav-item active">
+               <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+               </li>
+          
+               <li class="nav-item dropdown">
+               <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Menu</a>
+      
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+              
+                      <a class="dropdown-item" href="catalog.php#sushi">Sushi</a>
+                      <a class="dropdown-item" href="catalog.php#rolls">Rolls</a>
+
+                  <div class="dropdown-divider"></div>
+      
+                   <a class="dropdown-item" href="catalog.php#entrees">Entree</a>
+                   <a class="dropdown-item" href="catalog.php#appeitizers">Appetizer</a>
+      
+                </div>
+            </li>
+            <?php
+            if(isset($_SESSION["userID"]))
+            {
+              echo '<li class="nav-item">
+                <a class="nav-link " href="cart.php">Cart</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link " href="orders.php">Orders</a>
+                  </li><a class="nav-link" href="logout.php">Logout <span class="sr-only">(current)</span></a>';
+            }
+            else
+            {
+              echo '<li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login/Signup</a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="login.php">Login</a>
+                        <a class="dropdown-item" href="Register.php">Sign Up</a>
+      
+                      </div>
+                </li>';
+            }
+ 
+        ?>
+        
+
+    </ul>
+    
+        <form action="search.php" class="form-inline my-2 my-lg-0" method ="post">
+          <input class="form-control mr-sm-2" type="search" name="search" placeholder="Search" aria-label="Search">
+          <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Go</button>
+        </form>
+
+
+      </div>
+    </div>
+  </nav>
+
+  </div>
